@@ -1,0 +1,42 @@
+@use 'sass:math';
+
+// 01. Media Query Breakpoints
+$mobile-portrait-max: 478px;
+$mobile-landscape-max: 767px;
+$tablet-max: 991px;
+$large-min: 1280px;
+$xlarge-min: 1440px;
+$xxlarge-min: 1920px;
+
+// 02. Colours
+$yellow: #ffd068;
+$red: #f56d4c;
+$blue: #8bd1d0;
+$grey--dark: #2e3649;
+$grey: #485570;
+$grey--light: #9599a2;
+$grey--transparent: rgba(0, 7, 18, 0.6);
+$white: #dfe4e6;
+$bright-white: #f6f7f9;
+$black: #0a0a0a;
+$white: #fff;
+
+$body-background-color: $bright-white;
+$default-font-color: $grey;
+$default-link-color: $grey;
+$default-hover-color: $grey--dark;
+
+// 03. Type
+$avenir: avenir, helvetica, arial, sans-serif;
+$body-font-family: $avenir;
+$default-font-family: $body-font-family;
+$font-family: $body-font-family;
+$heading-font-family: $avenir;
+
+// 04. Grid
+$grid-columns: 12;
+$grid-gutter: 30px;
+$container-width: 1440px;
+$container-gutter-mobile: math.div($grid-gutter, 2);
+$container-gutter-tablet: 50px;
+$container-gutter-desktop: 70px;
