@@ -1,34 +1,45 @@
 <template>
-  <Intro>
-    <Heading content="laravel-test-frontend" />
-    <p>
-      Welcome to the
-      <a
-        href="https://formfunfunction.com/"
-        target="_blank"
-        rel="noreferrer"
-      >formfunfunction</a>
-      Nuxt starter project. Head to<Code>/src/pages/index.vue</Code> to get
-      stuck in.
-    </p>
-  </Intro>
+  <div class="container">
+    <h1>Latest Products</h1>
+    <hr />
+    <p v-if="error" class="error">{{ error }}</p>
+    <div class="product-container">
+      <div
+        v-for="(product, index) in products"
+        :key="product.id"
+        :item="product"
+        :index="index"
+        class="product"
+      >
+        <p class="title">{{ product.name }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import Intro from '@/components/intro/Intro.vue'
-import Code from '@/components/intro/Code.vue'
-import Heading from '@/components/intro/Heading.vue'
+import PostService from '../PostService'
 
 export default Vue.extend({
-  name: 'Home',
-  components: {
-    Intro,
-    Code,
-    Heading
+  name: 'Products',
+  data() {
+    return {
+      products: [],
+      error: ''
+    }
   },
-
-  head: {
-    title: 'Hello world!'
+  async created() {
+    try {
+      this.products = await PostService.getPosts()
+    } catch (e) {
+      this.error = e.message
+    }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.container {
+  width: 80vw;
+}
+</style>
